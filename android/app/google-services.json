@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "279738675273",
+    "firebase_url": "https://wecare-802bd.firebaseio.com",
+    "project_id": "wecare-802bd",
+    "storage_bucket": "wecare-802bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279738675273:android:b725debf5ef0f17d2dcf98",
+        "android_client_info": {
+          "package_name": "com.example.wecare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279738675273-smffp46rnr1e88b3j5nhqo07ous9t8pm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaXYjCla0GydMU0tLvGmlF-JPJgqnXRkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279738675273-smffp46rnr1e88b3j5nhqo07ous9t8pm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279738675273:android:f8ebcab7afd2019f2dcf98",
+        "android_client_info": {
+          "package_name": "com.example.wecareapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279738675273-smffp46rnr1e88b3j5nhqo07ous9t8pm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaXYjCla0GydMU0tLvGmlF-JPJgqnXRkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279738675273-smffp46rnr1e88b3j5nhqo07ous9t8pm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
