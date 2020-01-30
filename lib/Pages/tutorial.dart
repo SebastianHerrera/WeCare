@@ -75,7 +75,6 @@ class _TutorialPageState extends State<TutorialPage> {
                   SizedBox(
                     height: 45.0,
                   ),
-                  
                 ],
               ),
             ),

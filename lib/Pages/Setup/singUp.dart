@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:wecareapp/Pages/Setup/singIn.dart';
 
 class SingUpPage extends StatefulWidget {
@@ -114,22 +115,32 @@ class _SingUpPageState extends State<SingUpPage> {
             builder: (context) => LoginPage(), fullscreenDialog: true));
   }
 
+
+
   void singUp() async {
     final formState = _formKey.currentState;
     if (formState.validate()) {
       formState.save();
-      try {
-        AuthResult user = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: _email, password: _password);
-        user.user.sendEmailVerification();
-        Navigator.of(context).pop();
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => LoginPage(), fullscreenDialog: true));
-      } catch (e) {
-        print(e.message);
-      }
+
+      FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: _email, password: _password)
+          .then((currentUser) => Firestore.instance
+                  .collection("users")
+                  .document(currentUser.user.uid)
+                  .setData({
+                "uid": currentUser.user.uid,
+                "email": currentUser.user.email,
+                "username": '',
+                "icon": 'Default'
+              }).then((result) => {
+                        currentUser.user.sendEmailVerification(),
+                        Navigator.of(context).pop(),
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage(),
+                                fullscreenDialog: true))
+                      }));
     }
   }
 }

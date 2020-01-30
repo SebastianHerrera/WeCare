@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('${widget.user.user.email}'),
+      title: Text('${widget.user.user.uid}'),
     );
   }
 }
