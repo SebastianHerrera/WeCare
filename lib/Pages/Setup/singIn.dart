@@ -113,14 +113,13 @@ class _LoginPageState extends State<LoginPage> {
         MaterialPageRoute(
             builder: (context) => SingUpPage(), fullscreenDialog: true));
   }
-
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   void singIn() async {
     final formState = _formKey.currentState;
     if (formState.validate()) {
       formState.save();
       try {
-        AuthResult user = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _email, password: _password);
+        final FirebaseUser user = (await _auth.signInWithEmailAndPassword(email: _email, password: _password)).user;
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Home(user: user)));
       } catch (e) {
