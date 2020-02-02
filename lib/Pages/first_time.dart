@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wecareapp/Pages/Setup/singIn.dart';
+import 'package:wecareapp/Pages/Auth/singIn.dart';
 import 'package:wecareapp/Pages/tutorial.dart';
 
 class FirstTimePage extends StatefulWidget {

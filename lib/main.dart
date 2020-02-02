@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wecareapp/Pages/Setup/singIn.dart';
+import 'package:wecareapp/Pages/Auth/singIn.dart';
 import 'package:wecareapp/Pages/first_time.dart';
 import 'package:wecareapp/Pages/home.dart';
 import 'package:wecareapp/controllers/AuthService.dart';
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: FutureBuilder<FirebaseUser>(
-        future: getUser(),
+        future: AuthService().getUser(),
         builder: (context, AsyncSnapshot<FirebaseUser> snapshot){
           if(snapshot.connectionState == ConnectionState.done){
             if(snapshot.error != null){

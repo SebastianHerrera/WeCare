@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'Setup/singIn.dart';
-
+import 'package:wecareapp/controllers/AuthService.dart';
+import 'Auth/singIn.dart';
 class Home extends StatefulWidget {
   const Home({key, this.user}) : super(key: key);
 
@@ -13,7 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,7 @@ class _HomeState extends State<Home> {
         child: RaisedButton(
             child: Text("LOGOUT"),
             onPressed: () async {
-              await FirebaseAuth.instance.signOut();
+              await AuthService().logout();
               Navigator.push(
                   context,
                   MaterialPageRoute(

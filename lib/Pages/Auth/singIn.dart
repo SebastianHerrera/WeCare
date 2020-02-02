@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:wecareapp/Pages/Setup/singUp.dart';
+import 'package:wecareapp/Pages/Auth/singUp.dart';
 import 'package:wecareapp/Pages/home.dart';
+import 'package:wecareapp/controllers/AuthService.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -23,6 +24,11 @@ class _LoginPageState extends State<LoginPage> {
             textDirection: TextDirection.ltr,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Image.asset(
+                'lib/images/logo-complete 1.png',
+                width: 250,
+                height: 250,
+              ),
               Form(
                 key: _formKey,
                 child: Column(
@@ -34,6 +40,9 @@ class _LoginPageState extends State<LoginPage> {
                           return 'Por favor escribe un correo';
                         }
                       },
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
                       keyboardType: TextInputType.emailAddress,
                       onSaved: (input) => _email = input,
                       decoration: InputDecoration(
@@ -41,6 +50,10 @@ class _LoginPageState extends State<LoginPage> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Color.fromARGB(255, 255, 178, 68), width: 2.0),
+                            borderRadius: BorderRadius.circular(25.0),
                           ),
                           icon: Icon(
                             Icons.email,
@@ -56,10 +69,17 @@ class _LoginPageState extends State<LoginPage> {
                           return 'Tu contraseña debe de tener minimo 5 carácteres.';
                         }
                       },
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
                       onSaved: (input) => _password = input,
                       decoration: InputDecoration(
                           labelText: 'Clave',
                           fillColor: Colors.white,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Color.fromARGB(255, 255, 178, 68), width: 2.0),
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
                           border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(25.0),
                             borderSide: new BorderSide(),
@@ -113,18 +133,17 @@ class _LoginPageState extends State<LoginPage> {
         MaterialPageRoute(
             builder: (context) => SingUpPage(), fullscreenDialog: true));
   }
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   void singIn() async {
     final formState = _formKey.currentState;
     if (formState.validate()) {
       formState.save();
-      try {
-        final FirebaseUser user = (await _auth.signInWithEmailAndPassword(email: _email, password: _password)).user;
+      AuthService().loginUser(email: _email, password: _password).then((user) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Home(user: user)));
-      } catch (e) {
-        print(e.message);
-      }
+      });
     }
   }
 }
+
+//

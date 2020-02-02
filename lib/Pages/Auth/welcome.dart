@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wecareapp/Pages/Setup/singIn.dart';
-import 'package:wecareapp/Pages/Setup/singUp.dart';
+import 'package:wecareapp/Pages/Auth/singIn.dart';
+import 'package:wecareapp/Pages/Auth/singUp.dart';
 
 class WelcomePage extends StatefulWidget {
   WelcomePage({Key key}) : super(key: key);

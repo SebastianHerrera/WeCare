@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:wecareapp/Pages/Setup/singIn.dart';
+import 'package:wecareapp/Pages/Auth/singIn.dart';
 
 class SingUpPage extends StatefulWidget {
   SingUpPage({Key key}) : super(key: key);
@@ -24,6 +24,11 @@ class _SingUpPageState extends State<SingUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Image.asset(
+                'lib/images/logo-complete 1.png',
+                width: 250,
+                height: 250,
+              ),
               Form(
                 key: _formKey,
                 child: Column(
@@ -35,10 +40,17 @@ class _SingUpPageState extends State<SingUpPage> {
                           return 'Por favor escribe un correo';
                         }
                       },
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
                       keyboardType: TextInputType.emailAddress,
                       onSaved: (input) => _email = input,
                       decoration: InputDecoration(
                           labelText: 'Email',
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Color.fromARGB(255, 255, 178, 68), width: 2.0),
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(),
@@ -57,13 +69,20 @@ class _SingUpPageState extends State<SingUpPage> {
                           return 'Tu contraseña debe de tener minimo 5 carácteres.';
                         }
                       },
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
                       onSaved: (input) => _password = input,
                       decoration: InputDecoration(
                           labelText: 'Clave',
                           fillColor: Colors.white,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Color.fromARGB(255, 255, 178, 68), width: 2.0),
+                            borderRadius: BorderRadius.circular(25.0),
+                          ),
                           border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(25.0),
-                            borderSide: new BorderSide(),
+                            borderSide: new BorderSide(color: Colors.white, width: 2.0),
                           ),
                           icon: Icon(
                             Icons.vpn_key,
