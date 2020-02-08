@@ -26,12 +26,19 @@ class _WelcomePageState extends State<WelcomePage> {
               height: 250,
             ),
             RaisedButton(
+              color: Color.fromARGB(255, 255, 178, 68),
+              textTheme: ButtonTextTheme.accent,
+              textColor: Colors.white,
               onPressed: navigateToSingIn,
-              child: Text('Sing in'),
+              child: Text('Iniciar Sesión',  style: TextStyle(fontWeight: FontWeight.bold),),
             ),
+            SizedBox(height: 20.0,),
             RaisedButton(
+              color: Color.fromARGB(255, 255, 178, 68),
+              textTheme: ButtonTextTheme.accent,
+              textColor: Colors.white,
               onPressed: navigateToSingUp,
-              child: Text('Sing iup'),
+              child: Text('Registrarse',  style: TextStyle(fontWeight: FontWeight.bold),),
             )
           ],
         ),

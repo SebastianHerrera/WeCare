@@ -25,10 +25,11 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Image.asset(
-                'lib/images/logo-complete 1.png',
+                'lib/images/draw1.png',
                 width: 250,
                 height: 250,
               ),
+              SizedBox(height: 20),
               Form(
                 key: _formKey,
                 child: Column(

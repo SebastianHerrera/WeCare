@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:wecareapp/Pages/Auth/singIn.dart';
-import 'package:wecareapp/Pages/first_time.dart';
+import 'package:wecareapp/Pages/Auth/welcome.dart';
 import 'package:wecareapp/Pages/home.dart';
 import 'package:wecareapp/controllers/AuthService.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'WeCare App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
               return Text(snapshot.error.toString());
             }
 
-            return snapshot.hasData ? Home(user: snapshot.data,): LoginPage();
+            return snapshot.hasData ? Home(user: snapshot.data,): WelcomePage();
           }else{
             return LoadingCircle();
           }
@@ -44,6 +44,7 @@ class LoadingCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
+        color: Colors.white,
         child: CircularProgressIndicator(),
         alignment: Alignment(0.0, 0.0),
       ),
