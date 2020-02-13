@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wecareapp/Pages/Auth/singIn.dart';
+import 'package:wecareapp/components/tell_card.dart';
 import 'package:wecareapp/controllers/AuthService.dart';
 
 class UserHome extends StatefulWidget {
@@ -13,10 +14,14 @@ class UserHome extends StatefulWidget {
 class _UserHomeState extends State<UserHome> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: Center(
-         child: Text('Home', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25.0),),
-       ),
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              TellCard(username: "Sebastian Beleño", time_ago: "Hace 10 minutos", tag: "Deprimido", card_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "),
+            ]),
+      ),
     );
   }
 }

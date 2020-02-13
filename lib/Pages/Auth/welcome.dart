@@ -21,7 +21,7 @@ class _WelcomePageState extends State<WelcomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Image.asset(
-              'lib/images/logo-complete 1.png',
+              'lib/images/logo-complete-1.png',
               width: 250,
               height: 250,
             ),

@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wecareapp/Pages/user/messages_view.dart';
+import 'package:wecareapp/Pages/user/notifications_view.dart';
 import 'package:wecareapp/Pages/user/profile_view.dart';
 import 'package:wecareapp/Pages/user/tell_view.dart';
 import 'package:wecareapp/Pages/user/user_home.dart';
@@ -16,7 +18,9 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = [
       UserHome(),
+      MessagesView(),
       TellView(),
+      NotificationsView(),
       ProfileView()
   ];
 
@@ -26,22 +30,38 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(250, 10, 17, 54),
-      body: _children[_currentIndex],
+      body: Container(
+        margin: EdgeInsets.only(top: 20.0),
+        child: _children[_currentIndex]
+      ),
       bottomNavigationBar: BottomNavigationBar(
        onTap: onTabTapped, // new
        currentIndex: _currentIndex, // new
        items: [
          new BottomNavigationBarItem(
-           icon: Icon(Icons.home, color: Color.fromARGB(255, 255, 178, 68)),
-           title: Text('Inicio'),
+           icon: Icon(Icons.home, color: Colors.grey ),
+           title: Text('Inicio', style: TextStyle(color: Colors.black38),),
+           activeIcon: Icon(Icons.home, color: Color.fromARGB(255, 255, 178, 68))
          ),
          new BottomNavigationBarItem(
-           icon: Icon(Icons.mail, color: Color.fromARGB(255, 255, 178, 68)),
-           title: Text('Contar'),
+           icon: Icon(Icons.question_answer, color: Colors.grey),
+           title: Text('Mensajes', style: TextStyle(color: Colors.black38),),
+           activeIcon: Icon(Icons.question_answer, color: Color.fromARGB(255, 255, 178, 68))
          ),
          new BottomNavigationBarItem(
-           icon: Icon(Icons.person, color: Color.fromARGB(255, 255, 178, 68)),
-           title: Text('Profile')
+           icon: Icon(Icons.add_circle, color: Colors.grey),
+           title: Text('Contar', style: TextStyle(color: Colors.black38),),
+           activeIcon: Icon(Icons.add_circle, color: Color.fromARGB(255, 255, 178, 68))
+         ),
+         new BottomNavigationBarItem(
+           icon: Icon(Icons.notifications, color: Colors.grey),
+           title: Text('Profile', style: TextStyle(color: Colors.black38),),
+           activeIcon: Icon(Icons.notifications, color: Color.fromARGB(255, 255, 178, 68))
+         ),
+         new BottomNavigationBarItem(
+           icon: Icon(Icons.face, color: Colors.grey),
+           title: Text('Profile', style: TextStyle(color: Colors.black38),),
+           activeIcon: Icon(Icons.face, color: Color.fromARGB(255, 255, 178, 68))
          )
        ],
      ),
