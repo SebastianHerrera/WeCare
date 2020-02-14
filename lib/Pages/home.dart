@@ -29,6 +29,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+         automaticallyImplyLeading: false,
+        title: Text('${widget.user.email} | Beta cerrada v0.0.6 021420', style: TextStyle(fontSize: 15.0),)
+      ),
       backgroundColor: Color.fromARGB(250, 10, 17, 54),
       body: Container(
         margin: EdgeInsets.only(top: 20.0),
