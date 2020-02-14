@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class NotificationsView extends StatefulWidget {
-  NotificationsView({Key key}) : super(key: key);
+  final FirebaseUser user;
+
+  NotificationsView({Key key, this.user}) : super(key: key);
 
   @override
   _NotificationsViewState createState() => _NotificationsViewState();
@@ -12,7 +15,7 @@ class _NotificationsViewState extends State<NotificationsView> {
   Widget build(BuildContext context) {
     return Container(
        child: Center(
-         child: Text('Notificaiones', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25.0),),
+         child: Text('Tus notificaciones estarán aquí uwur', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25.0),),
        )
     );
   }

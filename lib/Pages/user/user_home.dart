@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wecareapp/Pages/Auth/singIn.dart';
 import 'package:wecareapp/components/tell_card.dart';
-import 'package:wecareapp/controllers/AuthService.dart';
 
 class UserHome extends StatefulWidget {
   final String user;
