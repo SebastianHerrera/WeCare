@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wecareapp/Pages/Auth/singUp.dart';
 import 'package:wecareapp/Pages/home.dart';
 import 'package:wecareapp/components/loading.dart';
@@ -17,8 +16,8 @@ class _LoginPageState extends State<LoginPage> {
   String _email, _password;
   String error = "";
 
-  bool loading = false; 
-  bool isError= false;
+  bool loading = false;
+  bool isError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,24 +38,22 @@ class _LoginPageState extends State<LoginPage> {
                     height: 250,
                   ),
                   SizedBox(height: 20),
-                  isError ? Container(
-                    child: Center(
-                        child: Text(
-                      "${this.error}",
-                      style: TextStyle(color: Colors.redAccent),
-                    )),
-                  ):SizedBox(height: 0),
+                  isError
+                      ? Container(
+                          child: Center(
+                              child: Text(
+                            "${this.error}",
+                            style: TextStyle(color: Colors.redAccent),
+                          )),
+                        )
+                      : SizedBox(height: 0),
                   Form(
                     key: _formKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         TextFormField(
-                          validator: (input) {
-                            if (input.isEmpty) {
-                              return 'Por favor escribe un correo';
-                            }
-                          },
+                          validator: _validateEmail,
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.emailAddress,
                           onSaved: (input) => _email = input,
@@ -144,6 +141,16 @@ class _LoginPageState extends State<LoginPage> {
             ));
   }
 
+  String _validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Ingresa un email válido.';
+    else
+      return null;
+  }
+
   void navigateToSinUp() {
     Navigator.pushReplacement(
         context,
@@ -157,7 +164,6 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         loading = true;
         isError = false;
-
       });
       formState.save();
 
@@ -172,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
         setState(() {
           loading = false;
           error = "No fue posible inicar sesion con estas credenciales.";
-          isError  = true;
+          isError = true;
         });
       }
     }
